@@ -11,6 +11,19 @@ use Illuminate\Http\Request;
 class LoanController extends Controller
 {
     /**
+     * Tampilkan riwayat peminjaman.
+     */
+    public function index(Request $request)
+    {
+        $loanRequests = LoanRequest::with('equipment.category')
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('loans.index', compact('loanRequests'));
+    }
+
+    /**
      * Tampilkan formulir pengajuan peminjaman pihak ketiga.
      */
     public function create()

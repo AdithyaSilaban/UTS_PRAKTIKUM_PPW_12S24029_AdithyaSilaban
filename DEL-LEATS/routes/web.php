@@ -32,6 +32,9 @@ Route::get('equipments/{id}', [EquipmentController::class, 'show'])->name('equip
 |--------------------------------------------------------------------------
 */
 
+// Riwayat peminjaman
+Route::get('loans', [LoanController::class, 'index'])->name('loans.index');
+
 // Formulir pengajuan peminjaman aset
 Route::get('loans/create', [LoanController::class, 'create'])->name('loans.create');
 
